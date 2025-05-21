@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const LoginWrapper = styled.div`
-  width: 24rem;
+  width: 24px;
   border-radius: 0.5rem;
   padding: 2.5rem;
   background-color: white;
@@ -73,7 +73,7 @@ function LoginView({
     <CssVarsProvider disableTransitionOnChange>
       <CssBaseline />
       <Wrapper>
-        <Space />
+        <div style={{ flexGrow: 1 }} />
         <LoginWrapper>
           <Typography level="h4" component="h1" fontWeight={700}>
             Sign in to Djangopress

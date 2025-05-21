@@ -8,8 +8,6 @@ export interface URLs {
 }
 
 export const URLsContext = React.createContext<URLs>({
-    posts_index: "",
+  posts_index: "",
   media_index: "",
 });
-
-

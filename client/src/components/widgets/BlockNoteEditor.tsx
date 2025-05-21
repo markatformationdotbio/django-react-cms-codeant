@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { DirtyFormMarker } from "@django-bridge/react";
 import "@blocknote/core/fonts/inter.css";
 import { Block } from "@blocknote/core";
@@ -49,9 +49,17 @@ export default function BlockNoteEditor({
   name,
   initialContent,
 }: BlockNoteEditorProps) {
-  const [blocks, setBlocks] = React.useState<Block[]>(initialContent);
+  const [blocks, setBlocks] = React.useState(initialContent);
   const [dirty, setDirty] = React.useState(false);
   const editor = useCreateBlockNote({ initialContent });
+
+  const onChange = useCallback(
+    (doc: (typeof editor)["document"], dirty: boolean) => {
+      setBlocks(doc);
+      setDirty(dirty);
+    },
+    []
+  );
 
   return (
     <>
@@ -59,10 +67,7 @@ export default function BlockNoteEditor({
       {dirty && <DirtyFormMarker />}
       <BlockNoteView
         editor={editor}
-        onChange={() => {
-          setBlocks(editor.document);
-          setDirty(true);
-        }}
+        onChange={() => onChange(editor.document, dirty)}
         theme={{
           light: lightTheme,
           dark: darkTheme,

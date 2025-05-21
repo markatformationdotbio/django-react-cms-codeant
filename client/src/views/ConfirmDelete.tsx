@@ -17,7 +17,7 @@ function ConfirmDeleteView({
   messageHtml,
   actionUrl,
 }: ConfirmDeleteViewContext) {
-  const { overlay, requestClose } = React.useContext(OverlayContext);
+  const { requestClose } = React.useContext(OverlayContext);
   const csrfToken = React.useContext(CSRFTokenContext);
 
   return (
@@ -34,15 +34,13 @@ function ConfirmDeleteView({
 
         <Box display="flex" gap="12px" pt="20px">
           <Button type="submit">Delete</Button>
-          {overlay && (
-            <Button
-              type="button"
-              variant="outlined"
-              onClick={() => requestClose({ skipDirtyFormCheck: true })}
-            >
-              Cancel
-            </Button>
-          )}
+          <Button
+            type="button"
+            variant="outlined"
+            onClick={() => requestClose({ skipDirtyFormCheck: true })}
+          >
+            Cancel
+          </Button>
         </Box>
       </Form>
     </Layout>

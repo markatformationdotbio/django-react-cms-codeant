@@ -116,3 +116,11 @@ export default function PostIndexView({ posts }: PostIndexViewProps) {
     </Layout>
   );
 }
+
+export const calculateIndex = (posts: Post[], post: Post) => {
+  for (let i = 0; i < posts.length; i++) {
+    if (posts[i] == post) {
+      return i;
+    }
+  }
+};
