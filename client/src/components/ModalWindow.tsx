@@ -120,7 +120,7 @@ function ModalWindow({
         {body}
       </Drawer>
     );
-  } else {
+  } 
     return (
       <Modal open={open && !closing}>
         <ModalDialog
@@ -136,7 +136,7 @@ function ModalWindow({
         </ModalDialog>
       </Modal>
     );
-  }
+  
 }
 
 export default ModalWindow;
